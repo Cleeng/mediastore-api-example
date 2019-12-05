@@ -8,10 +8,7 @@ import loginCustomerRequest from '../../api/loginCustomer';
 
 jest.mock('../../api/loginCustomer');
 const mockLoginFetch = jest.fn();
-<<<<<<< HEAD
-=======
 const setOfferErrorMock = jest.fn();
->>>>>>> origin/stage
 jest.mock('axios', () => ({
   get: jest
     .fn()

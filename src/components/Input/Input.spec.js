@@ -214,8 +214,6 @@ describe('Input', () => {
       wrapper.unmount();
       expect(clearTimeout).toHaveBeenCalledWith(timeoutId);
     });
-<<<<<<< HEAD
-=======
 
     it('should call onChange cb when input change', () => {
       const onChangeMock = jest.fn();
@@ -227,6 +225,5 @@ describe('Input', () => {
 
       expect(onChangeMock).toHaveBeenCalledWith(MockInputValue);
     });
->>>>>>> origin/stage
   });
 });

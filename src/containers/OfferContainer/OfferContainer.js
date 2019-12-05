@@ -2,20 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Offer from 'components/Offer';
-<<<<<<< HEAD
-import getOfferDetails from 'api/getOfferDetails';
-import createOrder from 'api/createOrder';
-import updateOrder from 'api/updateOrder';
-=======
->>>>>>> origin/stage
 import { MESSAGE_TYPE_SUCCESS, MESSAGE_TYPE_FAIL } from 'components/Input';
 import { withTranslation } from 'react-i18next';
 import ErrorPage from 'components/ErrorPage';
 import Loader from 'components/Loader';
-<<<<<<< HEAD
-=======
 import { getOfferDetails, createOrder, updateOrder } from 'api';
->>>>>>> origin/stage
 import saveOfferId from '../../util/offerIdHelper';
 import StyledLoaderContainer from './StyledOfferContainer';
 import labeling from '../labeling';
