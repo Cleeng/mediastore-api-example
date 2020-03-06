@@ -2,15 +2,18 @@ import styled from 'styled-components';
 import * as colors from 'styles/variables';
 
 export const ErrorPageStyled = styled.div`
-  width: 80%;
-  min-height: 350px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-size: 15px;
+
+  width: 80%;
+  min-height: 350px;
+  margin: 0 auto;
+
   color: ${colors.MainTextColor};
+
+  font-size: 15px;
   font-family: 'Geomanist';
 `;
 
@@ -24,4 +27,10 @@ export const MessageStyled = styled.div`
 export const IconStyled = styled.img`
   width: 60px;
   height: 60px;
+`;
+
+export const LogoutWrapper = styled.nav`
+  position: relative;
+  top: 30px;
+  left: 15px;
 `;
