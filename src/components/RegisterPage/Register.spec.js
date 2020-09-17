@@ -14,6 +14,7 @@ jest.mock('react-router-dom', () => {
 jest.mock('containers/labeling', () => () => Component => props => (
   <Component t={k => k} {...props} />
 ));
+
 jest.mock('react-i18next', () => ({
   withTranslation: () => Component => props => (
     <Component t={k => k} {...props} />
