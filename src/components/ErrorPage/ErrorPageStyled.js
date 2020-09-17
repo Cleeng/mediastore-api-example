@@ -11,26 +11,21 @@ export const ErrorPageStyled = styled.div`
   min-height: 350px;
   margin: 0 auto;
 
-  color: ${colors.MainTextColor};
+  color: ${colors.MainColor};
 
   font-size: 15px;
   font-family: 'Geomanist';
 `;
 
 export const MessageStyled = styled.div`
-  margin-top: 10%;
+  margin-top: 30px;
+
   font-size: 25px;
   font-weight: 300;
   line-height: 1.3em;
   text-align: center;
 `;
 export const IconStyled = styled.img`
-  width: 60px;
-  height: 60px;
-`;
-
-export const LogoutWrapper = styled.nav`
-  position: relative;
-  top: 30px;
-  left: 15px;
+  width: 100px;
+  height: auto;
 `;

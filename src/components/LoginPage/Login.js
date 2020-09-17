@@ -10,7 +10,7 @@ import Footer from 'components/Footer';
 import saveOfferId from 'util/offerIdHelper';
 import savePublisherId from 'util/publisherIdHelper';
 import labeling from 'containers/labeling';
-import Auth from 'services/auth';
+import { isHosted } from 'util/appConfigHelper';
 
 import {
   ContentWrapperStyled,
@@ -39,7 +39,6 @@ class Login extends Component {
         emailChanged: true
       });
     }
-    Auth.isLogged();
   }
 
   setOfferId = value => this.setState({ offerId: value });
@@ -73,27 +72,29 @@ class Login extends Component {
               <Button isLink to={{ pathname: '/register' }} theme="secondary">
                 {t('Go to register')}
               </Button>
-              <SocialStyled>
-                <SeparatorStyled>{t('Or sign in with')}</SeparatorStyled>
-                <Button
-                  theme="simple"
-                  size="small"
-                  fontSize="13px"
-                  label={t('Sign in with Facebook')}
-                  icon={fbIcon}
-                >
-                  Facebook
-                </Button>
-                <Button
-                  theme="simple"
-                  size="small"
-                  fontSize="13px"
-                  label={t('Sign in with Google')}
-                  icon={googleIcon}
-                >
-                  Google
-                </Button>
-              </SocialStyled>
+              {!isHosted() && (
+                <SocialStyled>
+                  <SeparatorStyled>{t('Or sign in with')}</SeparatorStyled>
+                  <Button
+                    theme="simple"
+                    size="small"
+                    fontSize="13px"
+                    label={t('Sign in with Facebook')}
+                    icon={fbIcon}
+                  >
+                    Facebook
+                  </Button>
+                  <Button
+                    theme="simple"
+                    size="small"
+                    fontSize="13px"
+                    label={t('Sign in with Google')}
+                    icon={googleIcon}
+                  >
+                    Google
+                  </Button>
+                </SocialStyled>
+              )}
             </>
           )}
           <Button
@@ -103,6 +104,7 @@ class Login extends Component {
               fromMyAccount: isMyAccount
             }}
             theme="link"
+            margin="20px auto"
           >
             {t('Forgot password?')}
           </Button>
