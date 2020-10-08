@@ -118,6 +118,7 @@ class PasswordReset extends Component {
             <Button
               type="submit"
               theme="confirm"
+              size="big"
               disabled={processing || overloaded}
             >
               {processing ? (
@@ -139,7 +140,9 @@ PasswordReset.propTypes = {
   urlProps: PropTypes.shape({
     location: PropTypes.shape({
       search: PropTypes.string,
-      state: PropTypes.object
+      state: PropTypes.shape({
+        fromMyAccount: PropTypes.bool
+      })
     })
   }),
   t: PropTypes.func

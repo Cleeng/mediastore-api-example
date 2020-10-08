@@ -49,7 +49,10 @@ export const InsideWrapperStyled = styled.div`
 export const LeftBoxStyled = styled.div``;
 
 export const RightBoxStyled = styled.div`
-  flex-shrink: 0;
+  <<<<<<<head=======display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  >>>>>>>stageflex-shrink: 0;
   margin-left: 20px;
   text-align: right;
 `;
@@ -59,6 +62,10 @@ export const TitleStyled = styled.h3`
 
   font-size: 13px;
   font-weight: 700;
+<<<<<<< HEAD
+=======
+  line-height: 15px;
+>>>>>>> stage
 `;
 export const SubTitleStyled = styled.div`
   margin-top: 6px;
@@ -81,10 +88,18 @@ export const DateStyled = styled.div`
 `;
 export const ButtonTextStyled = styled.span`
   position: relative;
+<<<<<<< HEAD
   &:after {
     position: absolute;
     right: -17px;
     bottom: -1px;
+=======
+  line-height: 1.2;
+  &:after {
+    position: absolute;
+    right: -17px;
+    bottom: 0;
+>>>>>>> stage
     font-size: 13px;
     ${props => (props.isExpanded ? "content: '▲'" : "content: '▼'")};
   }
