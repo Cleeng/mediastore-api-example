@@ -58,8 +58,7 @@ export const ButtonsWrapper = styled.div`
   button {
     width: 40%;
     margin: 0 5px;
-    <<<<<<<headfont-weight: 700;
-    =======>>>>>>>stage &:disabled {
+    &:disabled {
       cursor: not-allowed;
     }
   }

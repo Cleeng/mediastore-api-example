@@ -289,7 +289,8 @@ describe('RegisterForm', () => {
         }
       });
       registerCustomerRequest.mockResolvedValue({
-        status: 422
+        status: 422,
+        errors: ['Customer already exists']
       });
       const wrapper = shallow(<RegisterForm offerId="S705970293_NL" />);
       const instance = wrapper.instance();
@@ -332,7 +333,7 @@ describe('RegisterForm', () => {
         expect(instance.state.generalError).toBe(
           'Server overloaded. Please try again later.'
         );
-        expect(instance.state.overloaded).toBe(true);
+        expect(instance.state.disableActionButton).toBe(true);
         done();
       });
     });
