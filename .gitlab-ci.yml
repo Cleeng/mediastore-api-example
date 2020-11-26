@@ -6,7 +6,7 @@ stages:
 ### TEMPLATES ###
 .build:
   stage: build
-  image: node:8.15-jessie
+  image: node:14.15-buster
   script:
     - yarn && yarn build --environment=${ENVIRONMENT}
     - STORYBOOK_ENV=${ENVIRONMENT} yarn build-storybook
@@ -24,61 +24,12 @@ stages:
 
 .test:
   stage: test
-  image: node:8.15-jessie
+  image: node:14.15-buster
   script:
     - yarn && yarn test --coverage
   cache:
     paths:
       - node_modules/
-  only:
-    - branches
-  tags:
-    - aws-runner
-  artifacts:
-    paths:
-      - coverage
-
-deploy_staging:
-  stage: deploy
-  image: python:latest
-  script:
-    - pip install awscli
-    - cd build
-    - aws s3 cp ./ s3://gummybear-staging.cleeng.com/ --recursive
-  only:
-    - stage
-  tags:
-    - aws-runner
-
-build_production:
-  stage: build
-  image: node:8.15-jessie
-  script:
-    - yarn && yarn build --environment=production
-  cache:
-    paths:
-      - node_modules/
-    key: node_cache
-  artifacts:
-    paths:
-      - build
-    expire_in: 1 hour
-  only:
-    - master
-  tags:
-    - aws-runner
-
-deploy_production:
-  stage: deploy
-  image: python:latest
-  script:
-    - pip install awscli
-    - cd build
-    - aws s3 cp ./ s3://mediastoresdk-demo.cleeng.com/ --recursive
-  only:
-    - master
-  tags:
-    - staging
   artifacts:
     paths:
       - coverage
@@ -134,14 +85,14 @@ build_demo:
   variables:
     ENVIRONMENT: production
   only:
-    - github_master
+    - master
 
 test_demo:
   stage: test
   extends: .test
   environment: demo
   only:
-    - github_master
+    - master
     
 deploy_demo:
   stage: deploy
@@ -152,8 +103,8 @@ deploy_demo:
     AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
     BUCKET: $DEMO_BUCKET
   only:
-    - github+master
-### END OF PROD ENVIRONMENT ###
+    - master
+### END OF DEMO ENVIRONMENT ###
 
 
 ### STAGING ENVIRONMENT ###
