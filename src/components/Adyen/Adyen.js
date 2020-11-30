@@ -6,14 +6,15 @@ import { withTranslation } from 'react-i18next';
 import labeling from 'containers/labeling';
 import { AdyenStyled, ConfirmButtonStyled } from './AdyenStyled';
 
-const ADYEN_STYLESHEET_HREF =
-  'https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.11.4/adyen.css';
-const ADYEN_SCRIPT_HREF =
-  'https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.10.1/adyen.js';
-
 const COMPONENT_CONTAINER_ID = 'component-container';
 const PAYMENT_METHOD_CARD = 'card';
-const ENV_TEST = 'test';
+
+const ADYEN_ENV =
+  ENVIRONMENT_CONFIGURATION.REACT_ENV === 'production' ? 'live' : 'test';
+
+const ADYEN_STYLESHEET_HREF = `https://checkoutshopper-${ADYEN_ENV}.adyen.com/checkoutshopper/sdk/3.11.4/adyen.css`;
+
+const ADYEN_SCRIPT_HREF = `https://checkoutshopper-${ADYEN_ENV}.adyen.com/checkoutshopper/sdk/3.10.1/adyen.js`;
 
 class Adyen extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class Adyen extends Component {
 
     const configuration = {
       showPayButton: false,
-      environment: ENV_TEST,
+      environment: ADYEN_ENV,
       clientKey: ENVIRONMENT_CONFIGURATION.ADYEN_CLIENT_KEY,
       onSubmit,
       onChange
