@@ -18,6 +18,7 @@ import applyCoupon from './Customer/applyCoupon';
 import getCaptureStatus from './Customer/getCaptureStatus';
 import updateCaptureAnswers from './Customer/updateCaptureAnswers';
 import submitConsents from './Customer/submitConsents';
+import getTransactionReceipt from './Customer/getTransactionReceipt';
 import getPaymentMethods from './Publisher/getPaymentMethods';
 import getConsents from './Publisher/getConsents';
 
@@ -43,5 +44,6 @@ export {
   applyCoupon,
   submitConsents,
   getPaymentMethods,
-  getConsents
+  getConsents,
+  getTransactionReceipt
 };

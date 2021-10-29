@@ -95,6 +95,16 @@ export const IdStyled = styled.div`
 
   font-size: 13px;
 `;
+export const PriceStyled = styled.div`
+  color: ${MainColor};
+
+  font-size: 13px;
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 export const DateStyled = styled.div`
   margin-top: 6px;
 
