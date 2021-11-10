@@ -84,13 +84,13 @@ const SwitchPlanPopup = ({
               step={step}
               dangerouslySetInnerHTML={{
                 __html: `${t(`You are about to change your plan from <b>
-                  ${fromOffer.offerTitle}</b> to <b>
+                  ${fromOffer.offerTitle}</b> to <b> 
                   ${toOffer.title} </b>. You will be charged the new price <b>
                   ${toOffer.nextPaymentPrice}${
                   toOffer.nextPaymentPriceCurrencySymbol
-                }
+                } 
                   </b> on your next billing date <b>
-                  ${dateFormat(fromOffer.nextPaymentAt)}</b>.`)}
+                  ${dateFormat(fromOffer.expiresAt)}</b>.`)}
                   <br />
                   ${
                     toOffer.couponNotApplicable
@@ -133,7 +133,7 @@ const SwitchPlanPopup = ({
                 {toOffer.nextPaymentPriceCurrencySymbol}
               </strong>{' '}
               {t('starting from ')}
-              <strong> {dateFormat(fromOffer.nextPaymentAt)}</strong>.
+              <strong> {dateFormat(fromOffer.expiresAt)}</strong>.
             </TextStyled>
           </ContentStyled>
           <ButtonWrapperStyled>
