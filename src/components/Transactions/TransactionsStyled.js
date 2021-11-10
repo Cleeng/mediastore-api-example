@@ -100,6 +100,7 @@ export const PriceStyled = styled.div`
 
   font-size: 13px;
   font-weight: 700;
+  text-decoration: underline;
 
   &:hover {
     cursor: pointer;
