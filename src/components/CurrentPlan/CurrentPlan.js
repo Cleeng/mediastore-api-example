@@ -85,15 +85,11 @@ class CurrentPlan extends PureComponent {
         ) : (
           <>
             {subscriptions.map(subItem => {
-              const description =
+              const description = `${
                 subItem.status === 'active'
-                  ? `${t('Next payment is on')} ${dateFormat(
-                      subItem.nextPaymentAt
-                    )}`
-                  : `${t('This plan will expire on')} ${dateFormat(
-                      subItem.expiresAt
-                    )}`;
-
+                  ? t('Next payment is on')
+                  : t('This plan will expire on')
+              } ${dateFormat(subItem.expiresAt)}`;
               return (
                 <SubscriptionStyled
                   key={subItem.offerId}

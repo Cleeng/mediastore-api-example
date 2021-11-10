@@ -27,5 +27,3 @@ yarn-error.log*
 # conf files
 /config/environments/staging.js
 /config/environments/development.js
-
-.idea/
