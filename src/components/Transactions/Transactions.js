@@ -5,11 +5,14 @@ import { withTranslation } from 'react-i18next';
 import labeling from 'containers/labeling';
 import Card from 'components/Card';
 import { dateFormat } from 'util/planHelper';
+import roundNumber from 'util/roundNumber';
 import MyAccountError from 'components/MyAccountError';
 import Button from 'components/Button';
 import { ReactComponent as noTransactionsIcon } from 'assets/images/errors/transaction_icon.svg';
 import SkeletonWrapper from 'components/SkeletonWrapper';
 import Loader from 'components/Loader';
+import getTransactionReceipt from 'api/Customer/getTransactionReceipt';
+import { Base64 } from 'js-base64';
 import {
   WrapStyled,
   InsideWrapperStyled,
@@ -18,6 +21,7 @@ import {
   SubTitleStyled,
   RightBoxStyled,
   IdStyled,
+  PriceStyled,
   DateStyled,
   ButtonTextStyled,
   TransactionListStyled
@@ -48,6 +52,15 @@ const TransactionsSkeleton = () => (
     ))}
   </Card>
 );
+
+const showReceipt = transactionId => {
+  getTransactionReceipt(transactionId).then(resp => {
+    const decodedReceipt = Base64.decode(resp.responseData);
+    const newWindow = window.open('', 'Receipt', '');
+    newWindow.document.write(decodedReceipt);
+    newWindow.document.close();
+  });
+};
 
 const Transactions = ({
   transactions,
@@ -94,7 +107,11 @@ const Transactions = ({
                   </SubTitleStyled>
                 </LeftBoxStyled>
                 <RightBoxStyled>
-                  <IdStyled>{subItem.transactionId}</IdStyled>
+                  <PriceStyled
+                    onClick={() => showReceipt(subItem.transactionId)}
+                  >
+                    {roundNumber(subItem.transactionPriceInclTax, 2)}
+                  </PriceStyled>
                   <DateStyled>{dateFormat(subItem.transactionDate)}</DateStyled>
                 </RightBoxStyled>
               </InsideWrapperStyled>
