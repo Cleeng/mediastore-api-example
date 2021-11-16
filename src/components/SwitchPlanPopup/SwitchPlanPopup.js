@@ -90,7 +90,7 @@ const SwitchPlanPopup = ({
                   toOffer.nextPaymentPriceCurrencySymbol
                 } 
                   </b> on your next billing date <b>
-                  ${dateFormat(fromOffer.expiresAt)}</b>.`)}
+                  ${dateFormat(fromOffer.nextPaymentAt)}</b>.`)}
                   <br />
                   ${
                     toOffer.couponNotApplicable
@@ -133,7 +133,7 @@ const SwitchPlanPopup = ({
                 {toOffer.nextPaymentPriceCurrencySymbol}
               </strong>{' '}
               {t('starting from ')}
-              <strong> {dateFormat(fromOffer.expiresAt)}</strong>.
+              <strong> {dateFormat(fromOffer.nextPaymentAt)}</strong>.
             </TextStyled>
           </ContentStyled>
           <ButtonWrapperStyled>

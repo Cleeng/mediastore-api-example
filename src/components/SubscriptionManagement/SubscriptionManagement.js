@@ -124,6 +124,7 @@ const SubscriptionManagement = ({
                     offerData: {
                       offerId: subscription.offerId,
                       expiresAt: subscription.expiresAt,
+                      nextPaymentAt: subscription.nextPaymentAt,
                       price: `${subscription.nextPaymentPrice}${
                         currencyFormat[subscription.nextPaymentCurrency]
                       }`
