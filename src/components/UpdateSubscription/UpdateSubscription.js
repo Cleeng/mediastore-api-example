@@ -108,7 +108,7 @@ class UpdateSubscription extends Component {
     const resubscribeText = (
       <>
         <b>{`${priceRounded}${currency}`}</b> {t(popupContent.startedFrom)}{' '}
-        <b>{dateFormat(offerDetails.expiresAt)}.</b>
+        <b>{dateFormat(offerDetails.nextPaymentAt)}.</b>
       </>
     );
     return (
@@ -169,8 +169,11 @@ class UpdateSubscription extends Component {
             <TitleStyled>{t(popupContent.title)}</TitleStyled>
             <TextStyled>
               {t(popupContent.text)}{' '}
-              {action === 'resubscribe' && resubscribeText}
-              <b>{dateFormat(offerDetails.expiresAt)}</b>.
+              {action === 'resubscribe' ? (
+                resubscribeText
+              ) : (
+                <b>{dateFormat(offerDetails.expiresAt)}</b>
+              )}
             </TextStyled>
             <Button
               width="auto"
