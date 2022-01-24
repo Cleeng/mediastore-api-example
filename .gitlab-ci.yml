@@ -62,7 +62,8 @@ test:
 ### PROD ENVIRONMENT ###
 build_production:
   extends: .build
-  environment: production
+  environment: 
+    name: production
   variables:
     ENVIRONMENT: production
   only:
@@ -72,7 +73,8 @@ build_production:
 deploy_production:
   stage: deploy
   extends: .deploy
-  environment: production
+  environment:
+    name: production
   variables:
     AWS_ACCESS_KEY_ID: $PROD_AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $PROD_AWS_SECRET_ACCESS_KEY
@@ -88,7 +90,8 @@ deploy_production:
 ### DEMO ENVIRONMENT ###
 build_demo:
   extends: .build
-  environment: demo
+  environment: 
+    name: demo
   variables:
     ENVIRONMENT: sandbox
   only:
@@ -97,7 +100,8 @@ build_demo:
 deploy_demo:
   stage: deploy
   extends: .deploy
-  environment: demo
+  environment: 
+    name: demo
   variables:
     AWS_ACCESS_KEY_ID: $DEV_AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
@@ -112,19 +116,23 @@ deploy_demo:
 ### STAGING ENVIRONMENT ###
 build_staging:
   extends: .build
-  environment: staging
+  environment:
+    name: staging
   variables:
     ENVIRONMENT: staging
+    API_URL: $STAGING_API_URL
+    ADYEN_CLIENT_KEY: $STAGING_ADYEN_CLIENT_KEY
   before_script:
     - apt-get update && apt-get install -yq gettext-base
-    - envsubst < ./config/environments/staging.tpl.js > ./config/environments/staging.js
+    - envsubst < ./config/environments/testing.tpl.js > ./config/environments/staging.js
   only:
     - stage
 
 
 deploy_staging:
   extends: .deploy
-  environment: staging
+  environment: 
+    name: staging
   variables:
     AWS_ACCESS_KEY_ID: $DEV_AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
@@ -134,3 +142,33 @@ deploy_staging:
   dependencies:
     - build_staging
 ### END OF STAGING ENVIRONMENT ###
+
+### POC ENVIRONMENT ###
+build_poc:
+  extends: .build
+  environment:
+    name: poc
+  variables:
+    ENVIRONMENT: poc
+    API_URL: $POC_API_URL
+    ADYEN_CLIENT_KEY: $POC_ADYEN_CLIENT_KEY
+  before_script:
+    - apt-get update && apt-get install -yq gettext-base
+    - envsubst < ./config/environments/testing.tpl.js > ./config/environments/poc.js
+  only:
+    - stage
+
+
+deploy_poc:
+  extends: .deploy
+  environment: 
+    name: poc
+  variables:
+    AWS_ACCESS_KEY_ID: $DEV_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
+    BUCKET: $POC_BUCKET
+  only:
+    - stage
+  dependencies:
+    - build_poc
+### END OF POC ENVIRONMENT ###
