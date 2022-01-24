@@ -1,7 +1,7 @@
 ![Build](https://github.com/Cleeng/media-store-sdk/workflows/Build/badge.svg?branch=master&event=push)
 ![Tests](https://github.com/Cleeng/media-store-sdk/workflows/Tests/badge.svg?branch=master&event=push)
 
-# MediaStore SDK
+# MediaStore API Example
 
 This repo is an example app which shows how to integrate with Cleeng MediaStore API. It consists of components that will empower you to build and design a seamless checkout process, help visitors become subscribers, and then allow them to manage their subscription.
 
@@ -15,8 +15,8 @@ This repo is an example app which shows how to integrate with Cleeng MediaStore 
 **Follow commands**
 
 ```
-git clone https://github.com/Cleeng/media-store-sdk
-cd media-store-sdk
+git clone https://github.com/Cleeng/mediastore-api-example
+cd mediastore-api-example
 yarn install
 yarn start --environment=sandbox runWithTestOffer
 ```
@@ -60,7 +60,7 @@ Below you can find a list with available scripts.
 
 ## Architecture overview
 
-MediaStore SDK is a frontend application build with React. It was bootstrapped with Create React App. We are using a webpack to build it, Jest, and Enzyme for testing, Styled Components for styles.
+MediaStore API Example is a frontend application build with React. It was bootstrapped with Create React App. We are using a webpack to build it, Jest, and Enzyme for testing, Styled Components for styles.
 
 This application is communicating with the backend REST API. All methods available can be found [here](https://developers.cleeng.com/reference/getting-started).
 
